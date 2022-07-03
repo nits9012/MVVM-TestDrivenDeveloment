@@ -1,6 +1,7 @@
 # MVVM-TestDrivenDeveloment
 
-#Login credentials :
+Login credentials
+
 email: test@test.com & password: 123456
 
 
