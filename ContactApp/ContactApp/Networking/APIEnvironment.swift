@@ -14,7 +14,6 @@ enum APIEnvironment {
     case production
     
     func baseURL () -> String {
-       // return "https://\(subdomain()).\(domain())"
         return "https://\(domain())\(route())"
     }
     

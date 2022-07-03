@@ -22,6 +22,9 @@ class ContactListViewController: UIViewController {
     lazy var viewModel = {
       ContactListViewModel()
     }()
+    
+    private var dataSource: [Contact]?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,26 +35,48 @@ class ContactListViewController: UIViewController {
     }
     
     func fetchContacts(){
-        viewModel.getContacts()
         
-        viewModel.reloadTableView = {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+        viewModel.getAPIData(param: [:], completion: { (model, error) in
+            if let _ = error {
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Error", message: error?.message, preferredStyle: UIAlertController.Style.alert)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            } else {
+                if let modelUW = model {
+                    self.dataSource = modelUW
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
-        }
+        })
     }
-}
+        
+        
+//        viewModel.getContacts()
+//
+//        viewModel.reloadTableView = {
+//            DispatchQueue.main.async {
+//                self.tableView.reloadData()
+//            }
+//        }
+    }
+//}
 
 //MARK: - UITableview Delegate and Datasource
 extension ContactListViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.contactCellViewModel.count
+        return dataSource?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.identifier, for: indexPath) as? ContactTableViewCell else { return UITableViewCell() }
-        cell.cellViewModel = viewModel.getContactFromIndex(indexPath: indexPath)
+        let result = self.dataSource?[indexPath.row]
+        cell.nameLabel.text = result?.userName
+        cell.emailLabel.text = result?.userEmail
+        cell.genderLabel.text = result?.userGender.uppercased()
         return cell
     }
 }

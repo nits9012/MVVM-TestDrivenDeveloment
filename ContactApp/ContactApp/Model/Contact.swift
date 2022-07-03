@@ -8,9 +8,9 @@
 typealias Contacts = [Contact]
 
 
-struct ContactData: Codable {
-    var contacts: [Contact] = [Contact]()
-}
+//struct ContactData: Codable {
+//    var contacts: [Contact] = [Contact]()
+//}
 
 
 struct Contact: Codable {
