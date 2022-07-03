@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct ContactListCellViewModel{
-    let id: Int?
-    let userEmail, userGender, userName, userStatus:String?
-}
+//struct ContactListCellViewModel{
+//    let id: Int?
+//    let userEmail, userGender, userName, userStatus:String?
+//}

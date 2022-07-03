@@ -18,16 +18,16 @@ class ContactTableViewCell: UITableViewCell{
     class var identifier:String{String(describing: self)}
     class var nib:UINib{UINib(nibName: identifier, bundle: nil)}
     
-    var cellViewModel:ContactListCellViewModel?{
-        didSet{
-            nameLabel.text = (cellViewModel?.userName ?? "")
-            emailLabel.text = cellViewModel?.userEmail ?? ""
-            genderLabel.text = cellViewModel?.userGender ?? ""
-//            if let imageURL = cellViewModel?.imageURL, let url = URL(string: imageURL) {
-//                profilePictureImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "profile_load"))
-//            }
-        }
-    }
+//    var cellViewModel:ContactListCellViewModel?{
+//        didSet{
+//            nameLabel.text = (cellViewModel?.userName ?? "")
+//            emailLabel.text = cellViewModel?.userEmail ?? ""
+//            genderLabel.text = cellViewModel?.userGender ?? ""
+////            if let imageURL = cellViewModel?.imageURL, let url = URL(string: imageURL) {
+////                profilePictureImageView.sd_setImage(with: url, placeholderImage: UIImage(named: "profile_load"))
+////            }
+//        }
+//    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
