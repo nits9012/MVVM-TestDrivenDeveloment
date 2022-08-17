@@ -1,0 +1,60 @@
+//
+//  HTTPRequest.swift
+//  ContactApp
+//
+//  Created by Nitin Bhatt on 7/3/22.
+//
+
+import Foundation
+//
+//class HTTPRequest{
+//    func sendRequest(url:String,method:String,params: [String:String],completion: @escaping (Bool,Data?)->()){
+//
+//        guard var components = URLComponents(string: url) else {
+//            print("Error creating Url componenets")
+//            return
+//        }
+//
+//        components.queryItems = params.map { key, value in
+//            URLQueryItem(name: key, value: value)
+//        }
+//
+//        guard let url = components.url else{
+//            print("Error: cannot create URL")
+//            return
+//        }
+//
+//        var request = URLRequest(url: url)
+//        request.httpMethod = method
+//        request.setValue(APIHeaders.contentTypeValue, forHTTPHeaderField: APIHeaders.kContentType)
+//
+//
+//        // .ephemeral prevent JSON from caching (They'll store in Ram and nothing on Disk)
+//        let config = URLSessionConfiguration.ephemeral
+//        let session = URLSession(configuration: config)
+//
+//
+//        session.dataTask(with: request){data,response,error in
+//            guard error == nil else {
+//                print("Error: problem calling GET")
+//                print(error!)
+//                completion(false, nil)
+//                return
+//            }
+//
+//            guard let data = data else{
+//                print("Didn't receive data")
+//                completion(false, nil)
+//                return
+//            }
+//
+//            guard let response = response as? HTTPURLResponse, (200..<300) ~= response.statusCode else {
+//                print("HTTP request failed")
+//                completion(false, nil)
+//                return
+//            }
+//
+//            completion(true,data)
+//        }.resume()
+//    }
+//}
